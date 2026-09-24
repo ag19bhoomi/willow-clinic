@@ -1,0 +1,715 @@
+/* ---------------------------------------------------------------
+   Design tokens
+   "Willow Clinic" — a small, human booking system. The look borrows
+   from a physical appointment ledger/day-sheet rather than a generic
+   SaaS dashboard: paper tones, a serif for anything that reads like
+   a heading, hairline rules instead of card shadows.
+------------------------------------------------------------------*/
+:root {
+  --bg: #f2f3ed;
+  --surface: #ffffff;
+  --surface-sunken: #eceee5;
+  --ink: #202b24;
+  --ink-soft: #58645b;
+  --ink-faint: #8b968d;
+  --primary: #2f5d50;
+  --primary-dark: #203f37;
+  --primary-tint: #e4ebe4;
+  --accent: #b8863d;
+  --danger: #b1503a;
+  --danger-tint: #f5e6e1;
+  --border: #dbdfd3;
+  --border-strong: #c3c9b8;
+
+  --font-serif: "Source Serif 4", Georgia, "Times New Roman", serif;
+  --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+
+  --radius-sm: 4px;
+  --radius-md: 8px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  font-size: 15.5px;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-serif);
+  font-weight: 600;
+  color: var(--ink);
+  margin: 0 0 0.4em 0;
+  line-height: 1.25;
+}
+
+p {
+  margin: 0 0 1em 0;
+  color: var(--ink-soft);
+}
+
+a {
+  color: var(--primary);
+}
+
+button,
+input,
+select,
+textarea {
+  font-family: inherit;
+  font-size: inherit;
+  color: inherit;
+}
+
+:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}
+
+.app-shell {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.app-main {
+  flex: 1;
+  width: 100%;
+  max-width: 1040px;
+  margin: 0 auto;
+  padding: 40px 24px 80px;
+}
+
+/* ---------------------------- Top bar ---------------------------- */
+
+.topbar {
+  border-bottom: 1px solid var(--border);
+  background: var(--surface);
+}
+
+.topbar-inner {
+  max-width: 1040px;
+  margin: 0 auto;
+  padding: 18px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.brand {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  text-decoration: none;
+  color: var(--ink);
+}
+
+.brand-mark {
+  font-family: var(--font-serif);
+  font-size: 21px;
+  font-weight: 600;
+}
+
+.brand-sub {
+  font-size: 12.5px;
+  color: var(--ink-faint);
+}
+
+.topnav {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+}
+
+.topnav a {
+  text-decoration: none;
+  color: var(--ink-soft);
+  font-size: 14.5px;
+}
+
+.topnav a:hover {
+  color: var(--primary);
+}
+
+.topnav .pill {
+  color: var(--ink-soft);
+  font-size: 13.5px;
+  padding: 6px 12px;
+  border: 1px solid var(--border);
+  border-radius: 20px;
+}
+
+/* ------------------------------ Buttons --------------------------- */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 18px;
+  border-radius: var(--radius-sm);
+  border: 1px solid transparent;
+  font-size: 14.5px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s ease, border-color 0.15s ease;
+  text-decoration: none;
+}
+
+.btn-primary {
+  background: var(--primary);
+  color: #fff;
+}
+
+.btn-primary:hover {
+  background: var(--primary-dark);
+}
+
+.btn-primary:disabled {
+  background: var(--ink-faint);
+  cursor: not-allowed;
+}
+
+.btn-ghost {
+  background: transparent;
+  border-color: var(--border-strong);
+  color: var(--ink);
+}
+
+.btn-ghost:hover {
+  border-color: var(--primary);
+  color: var(--primary);
+}
+
+.btn-danger {
+  background: transparent;
+  border-color: var(--danger);
+  color: var(--danger);
+}
+
+.btn-danger:hover {
+  background: var(--danger-tint);
+}
+
+.btn-sm {
+  padding: 6px 12px;
+  font-size: 13px;
+}
+
+.btn-block {
+  width: 100%;
+}
+
+/* ------------------------------- Forms ----------------------------- */
+
+.field {
+  margin-bottom: 16px;
+}
+
+.field label {
+  display: block;
+  font-size: 13.5px;
+  color: var(--ink-soft);
+  margin-bottom: 6px;
+}
+
+.field input,
+.field select,
+.field textarea {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-sm);
+  background: var(--surface);
+  color: var(--ink);
+}
+
+.field input:focus,
+.field select:focus,
+.field textarea:focus {
+  border-color: var(--primary);
+}
+
+.field-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.role-toggle {
+  display: flex;
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+
+.role-toggle button {
+  flex: 1;
+  padding: 10px;
+  border: none;
+  background: var(--surface);
+  cursor: pointer;
+  font-size: 14px;
+  color: var(--ink-soft);
+  border-right: 1px solid var(--border-strong);
+}
+
+.role-toggle button:last-child {
+  border-right: none;
+}
+
+.role-toggle button.active {
+  background: var(--primary-tint);
+  color: var(--primary-dark);
+  font-weight: 600;
+}
+
+/* ------------------------------ Cards / panels -------------------- */
+
+.panel {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 28px;
+}
+
+.panel-narrow {
+  max-width: 420px;
+  margin: 40px auto;
+}
+
+.notice {
+  padding: 10px 14px;
+  border-radius: var(--radius-sm);
+  font-size: 13.5px;
+  margin-bottom: 16px;
+}
+
+.notice-error {
+  background: var(--danger-tint);
+  color: var(--danger);
+  border: 1px solid #e3c1b6;
+}
+
+.notice-success {
+  background: var(--primary-tint);
+  color: var(--primary-dark);
+  border: 1px solid #cddccd;
+}
+
+/* ------------------------------ Page header ------------------------ */
+
+.page-head {
+  margin-bottom: 30px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--border);
+}
+
+.page-head .eyebrow {
+  color: var(--accent);
+  font-size: 13.5px;
+  margin-bottom: 6px;
+}
+
+.page-head h1 {
+  font-size: 28px;
+}
+
+/* ------------------------------ Doctor directory -------------------- */
+
+.doctor-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 20px;
+  padding: 22px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.doctor-row:first-child {
+  padding-top: 0;
+}
+
+.doctor-row:last-child {
+  border-bottom: none;
+}
+
+.doctor-identity h3 {
+  font-size: 19px;
+  margin-bottom: 2px;
+}
+
+.doctor-specialization {
+  color: var(--primary);
+  font-size: 13.5px;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.doctor-meta {
+  color: var(--ink-faint);
+  font-size: 13.5px;
+}
+
+.doctor-meta span + span::before {
+  content: "·";
+  margin: 0 8px;
+  color: var(--border-strong);
+}
+
+.doctor-bio {
+  margin-top: 8px;
+  max-width: 56ch;
+}
+
+.doctor-fee {
+  text-align: right;
+  min-width: 130px;
+}
+
+.doctor-fee .amount {
+  font-family: var(--font-serif);
+  font-size: 21px;
+  color: var(--ink);
+  display: block;
+  margin-bottom: 10px;
+}
+
+.filter-row {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 8px;
+  flex-wrap: wrap;
+}
+
+.filter-chip {
+  padding: 6px 14px;
+  border: 1px solid var(--border-strong);
+  border-radius: 20px;
+  background: var(--surface);
+  font-size: 13.5px;
+  cursor: pointer;
+  color: var(--ink-soft);
+}
+
+.filter-chip.active {
+  background: var(--primary);
+  border-color: var(--primary);
+  color: #fff;
+}
+
+/* ------------------------------ Slot picker -------------------- */
+
+.slot-day {
+  margin-bottom: 22px;
+}
+
+.slot-day-label {
+  font-size: 13.5px;
+  color: var(--ink-faint);
+  margin-bottom: 10px;
+  padding-bottom: 6px;
+  border-bottom: 1px dashed var(--border-strong);
+}
+
+.slot-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.slot-btn {
+  padding: 9px 16px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-strong);
+  background: var(--surface);
+  font-size: 13.5px;
+  cursor: pointer;
+  color: var(--ink);
+}
+
+.slot-btn:hover:not(:disabled) {
+  border-color: var(--primary);
+}
+
+.slot-btn.selected {
+  background: var(--primary);
+  border-color: var(--primary);
+  color: #fff;
+}
+
+.slot-btn:disabled {
+  color: var(--ink-faint);
+  background: var(--surface-sunken);
+  cursor: not-allowed;
+  text-decoration: line-through;
+}
+
+/* ------------------------------ Ledger (appointments list) -------------------- */
+
+.ledger-date-group {
+  margin-bottom: 28px;
+}
+
+.ledger-date-heading {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.ledger-date-heading .date-main {
+  font-family: var(--font-serif);
+  font-size: 17px;
+}
+
+.ledger-date-heading .date-count {
+  color: var(--ink-faint);
+  font-size: 13px;
+}
+
+.ledger-entry {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 14px 16px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  margin-bottom: 8px;
+}
+
+.ledger-time {
+  font-weight: 600;
+  min-width: 84px;
+}
+
+.ledger-who {
+  flex: 1;
+}
+
+.ledger-who .name {
+  font-weight: 600;
+}
+
+.ledger-who .reason {
+  color: var(--ink-faint);
+  font-size: 13px;
+}
+
+.status-tag {
+  font-size: 12px;
+  padding: 4px 10px;
+  border-radius: 20px;
+  white-space: nowrap;
+}
+
+.status-pending {
+  background: #f4ecd9;
+  color: #8a6a1f;
+}
+
+.status-confirmed {
+  background: var(--primary-tint);
+  color: var(--primary-dark);
+}
+
+.status-completed {
+  background: var(--surface-sunken);
+  color: var(--ink-soft);
+}
+
+.status-cancelled {
+  background: var(--danger-tint);
+  color: var(--danger);
+}
+
+.ledger-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.empty-state {
+  padding: 50px 20px;
+  text-align: center;
+  color: var(--ink-faint);
+  border: 1px dashed var(--border-strong);
+  border-radius: var(--radius-md);
+}
+
+.empty-state h3 {
+  color: var(--ink-soft);
+  margin-bottom: 6px;
+}
+
+/* ------------------------------ Home / hero -------------------- */
+
+.hero {
+  padding: 50px 0 40px;
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 40px;
+  align-items: center;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 40px;
+}
+
+.hero h1 {
+  font-size: 40px;
+  max-width: 14ch;
+}
+
+.hero .lede {
+  font-size: 16.5px;
+  max-width: 46ch;
+  margin-bottom: 24px;
+}
+
+.hero-actions {
+  display: flex;
+  gap: 12px;
+}
+
+.hero-figure {
+  border: 1px solid var(--border);
+  background: var(--surface);
+  border-radius: var(--radius-md);
+  padding: 24px;
+}
+
+.hero-figure .slip-line {
+  display: flex;
+  justify-content: space-between;
+  padding: 9px 0;
+  border-bottom: 1px dashed var(--border-strong);
+  font-size: 13.5px;
+  color: var(--ink-soft);
+}
+
+.hero-figure .slip-line:last-child {
+  border-bottom: none;
+}
+
+.hero-figure .slip-title {
+  font-family: var(--font-serif);
+  font-size: 15.5px;
+  color: var(--ink);
+  margin-bottom: 14px;
+}
+
+.specialization-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+  margin-top: 10px;
+}
+
+.specialization-card {
+  padding: 16px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--surface);
+  text-decoration: none;
+  color: var(--ink);
+  cursor: pointer;
+}
+
+.specialization-card:hover {
+  border-color: var(--primary);
+}
+
+.specialization-card .name {
+  font-weight: 600;
+  margin-bottom: 4px;
+  display: block;
+}
+
+.specialization-card .count {
+  font-size: 12.5px;
+  color: var(--ink-faint);
+}
+
+/* ------------------------------ Misc -------------------- */
+
+.section-title {
+  font-size: 22px;
+  margin-bottom: 18px;
+}
+
+.two-col {
+  display: grid;
+  grid-template-columns: 1fr 340px;
+  gap: 32px;
+  align-items: start;
+}
+
+.summary-box {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 20px;
+  position: sticky;
+  top: 24px;
+}
+
+.summary-box h4 {
+  font-size: 15px;
+  margin-bottom: 14px;
+}
+
+.summary-line {
+  display: flex;
+  justify-content: space-between;
+  font-size: 13.5px;
+  color: var(--ink-soft);
+  padding: 7px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.summary-line:last-of-type {
+  border-bottom: none;
+}
+
+.loading-text {
+  color: var(--ink-faint);
+  padding: 30px 0;
+}
+
+@media (max-width: 760px) {
+  .hero {
+    grid-template-columns: 1fr;
+  }
+  .two-col {
+    grid-template-columns: 1fr;
+  }
+  .field-row {
+    grid-template-columns: 1fr;
+  }
+  .specialization-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .doctor-row {
+    flex-direction: column;
+  }
+  .doctor-fee {
+    text-align: left;
+  }
+}
